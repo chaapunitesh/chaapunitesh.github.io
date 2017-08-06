@@ -1,93 +1,38 @@
-var drops = [];
-
 function setup() {
-  createCanvas(windowWidth, windowHeight);
-}
-
-//function ()
-
-function draw() {
-  var x = mouseX;
-  var w = windowWidth;
-  var h = windowHeight;
-  var x = random(250);
-  x = map(x,0,windowWidth,0,255)
+  var w = floor(windowWidth);
+  var h = floor(windowHeight);
+  var canvas1 = createCanvas(w,h);
+  canvas1.style('z-index','0');
   background(0);
-  stroke(0,x,x+100);
-  fill(random(250),100,223);
+  var i = 0 , j = 0 ;
   textSize(18);
-   //Letter J
-   for ( i = w/900; i < w/97   ; i++) {
-     for (var j = h/80; j <h/60 ; j++) {
-       var r = int(random(0,2));
-       text(r,i*20,j*20);
-     }
+  fill(50);
+    for(j = 0 ; j*20 < h ; j++){
+    for( i = 0 ; i*20 < w ; i++){
+      text(floor(random(0,2)),i*20,j*20);
+    }
    }
-   for ( i = w/200 ; i < w/150 ;  i++) {
-     for (var j = h/60; j <=h/38 ; j++) {
-       var r = int(random(0,2));
-       text(r,i*20,j*20);
-     }
   }
-   for ( i = w/900 ; i < w/150;  i++) {
-     for (var j = h/38; j < h/ 33 ; j++) {
-       var r = int(random(0,2));
-       text(r,i*20,j*20);
-     }
-   }
-// // Letter E
-// for ( i = 17; i < 27   ; i++) {
-//   for (var j = 9; j <12 ; j++) {
-//     var r = int(random(0,2));
-//     text(r,i*20,j*20);
-//   }
-// }
-// for ( i = 17; i < 20   ; i++) {
-//   for (var j = 12; j <19 ; j++) {
-//     var r = int(random(0,2));
-//     text(r,i*20,j*20);
-//   }
-// }
-// for ( i = 17; i < 27   ; i++) {
-//   for (var j = 19; j <22 ; j++) {
-//     var r = int(random(0,2));
-//     text(r,i*20,j*20);
-//   }
-// }
-//
-//   for ( i = 20; i < 23   ; i++) {
-//     for (var j = 14; j <16 ; j++) {
-//       var r = int(random(0,2));
-//       text(r,i*20,j*20);
-//     }
-//   }
-//   // Letter E
-//   for ( i = 28; i < 38   ; i++) {
-//     for (var j = 9; j <12 ; j++) {
-//       var r = int(random(0,2));
-//       text(r,i*20,j*20);
-//     }
-//   }
-//   for ( i = 28; i < 31   ; i++) {
-//     for (var j = 12; j <19 ; j++) {
-//       var r = int(random(0,2));
-//       text(r,i*20,j*20);
-//     }
-//   }
-//   for ( i = 28; i < 38   ; i++) {
-//     for (var j = 19; j <22 ; j++) {
-//       var r = int(random(0,2));
-//       text(r,i*20,j*20);
-//     }
-//   }
-//
-//     for ( i = 31; i < 34   ; i++) {
-//       for (var j = 14; j <16 ; j++) {
-//         var r = int(random(0,2));
-//         text(r,i*20,j*20);
-//       }
-//     }
-
-// Letter V
+function draw() {
+  var w = floor(windowWidth);
+  var h = floor(windowHeight);
+  color(200);
+  fill(0,200,250);
+  textSize(floor((w*h)/9100));
+  text("Hi, I am Jeevan",w/4,h/2);
+}
+function windowResized(){
+  var w = floor(windowWidth);
+  var h = floor(windowHeight);
+  resizeCanvas(w, h);
+  background(0);
+  var i = 0 , j = 0 ;
+  textSize(18);
+  fill(50);
+  for(j = 0 ; j*20 < h ; j++){
+    for( i = 0 ; i*20 < w ; i++){
+      text(floor(random(0,2)),i*20,j*20);
+    }
+  }
 
 }

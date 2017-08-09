@@ -1,38 +1,39 @@
-function setup() {
-  var w = floor(windowWidth);
-  var h = floor(windowHeight);
-  var canvas1 = createCanvas(w,h);
-  canvas1.style('z-index','0');
-  background(0);
-  var i = 0 , j = 0 ;
-  textSize(18);
-  fill(50);
-    for(j = 0 ; j*20 < h ; j++){
-    for( i = 0 ; i*20 < w ; i++){
-      text(floor(random(0,2)),i*20,j*20);
-    }
-   }
-  }
-function draw() {
-  var w = floor(windowWidth);
-  var h = floor(windowHeight);
-  color(200);
-  fill(0,200,250);
-  textSize(floor((w*h)/9100));
-  text("Hi, I am Jeevan",w/4,h/2);
+var font;
+var vehicles = [];
+function preload(){
+ font = loadFont('12.ttf');
 }
-function windowResized(){
-  var w = floor(windowWidth);
-  var h = floor(windowHeight);
-  resizeCanvas(w, h);
-  background(0);
-  var i = 0 , j = 0 ;
-  textSize(18);
-  fill(50);
-  for(j = 0 ; j*20 < h ; j++){
-    for( i = 0 ; i*20 < w ; i++){
-      text(floor(random(0,2)),i*20,j*20);
-    }
-  }
+function setup() {
+  var w = windowWidth;
+  var h = windowHeight;
+  createCanvas(w,h);
+  background(51);
+  // textFont(font);
+  // textSize(192);
+  // fill(255);
+  // noStroke();
+  // text('train', 100, 200);
 
+  var points = font.textToPoints('Jeevan',w/8,h/1.7, 300, {
+    sampleFactor: 0.1
+  });
+
+  for (var i = 0; i < points.length; i++) {
+    var pt = points[i];
+    var vehicle = new Vehicle(pt.x, pt.y);
+    vehicles.push(vehicle);
+    // stroke(255);
+    // strokeWeight(8);
+    // point(pt.x, pt.y);
+  }
+}
+
+function draw() {
+  background(0);
+  for (var i = 0; i < vehicles.length; i++) {
+    var v = vehicles[i];
+    v.behaviors();
+    v.update();
+    v.show();
+  }
 }

@@ -1,10 +1,6 @@
-// Daniel Shiffman
-// http://codingtra.in
-// Steering Text Paths
-// Video: https://www.youtube.com/watch?v=4hA7G3gup-4
-
 function Vehicle(x, y) {
   this.pos = createVector(random(width), random(height));
+  // this.size = { wi=w , hi=h  };
   this.target = createVector(x, y);
   this.vel = p5.Vector.random2D();
   this.acc = createVector();
@@ -36,11 +32,11 @@ Vehicle.prototype.update = function() {
 }
 
 Vehicle.prototype.show = function() {
-  stroke(0,250,0);
-  fill(0,250,0);
+  stroke(0,250,250);
+  fill(0,250,250);
   // strokeWeight(5);
   var ran = floor(random(0,2));
-  textSize(15);
+  textSize((windowWidth*windowHeight)/50000);
   text(ran,this.pos.x,this.pos.y);
   // point(this.pos.x, this.pos.y);
 }

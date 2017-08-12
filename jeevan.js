@@ -1,5 +1,5 @@
 function Vehicle(x, y) {
-  this.pos = createVector(random(width), random(height));
+  this.pos = createVector(random(width), random(windowHeight));
   // this.size = { wi=w , hi=h  };
   this.target = createVector(x, y);
   this.vel = p5.Vector.random2D();
@@ -32,13 +32,12 @@ Vehicle.prototype.update = function() {
 }
 
 Vehicle.prototype.show = function() {
-  stroke(0,250,250);
-  fill(0,250,250);
+  stroke(0,250,70);
+  fill(0,250,70);
   // strokeWeight(5);
   var ran = floor(random(0,2));
   textSize((windowWidth*windowHeight)/50000);
   text(ran,this.pos.x,this.pos.y);
-  // point(this.pos.x, this.pos.y);
 }
 
 
@@ -58,7 +57,7 @@ Vehicle.prototype.arrive = function(target) {
 Vehicle.prototype.flee = function(target) {
   var desired = p5.Vector.sub(target, this.pos);
   var d = desired.mag();
-  if (d < 50) {
+  if (d < 84) {
     desired.setMag(this.maxspeed);
     desired.mult(-1);
     var steer = p5.Vector.sub(desired, this.vel);

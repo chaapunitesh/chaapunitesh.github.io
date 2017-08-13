@@ -11,3 +11,12 @@ function closeNav() {
     document.getElementById("main").style.marginLeft = "0";
     document.body.style.backgroundColor = "white";
 }
+
+
+function mouseOver() {
+      document.getElementById("ufo").src = "ufo2.png";
+  }
+
+function mouseOut() {
+      document.getElementById("ufo").src = "ufo.png";
+  }

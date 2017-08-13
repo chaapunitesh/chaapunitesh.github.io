@@ -12,6 +12,7 @@
     <script src="homie/just3.js" type="text/javascript"></script>
     <script src="project.js" type="text/javascript"></script>
     <script src="rocket.js" type="text/javascript"></script>
+    <script src="star.js" type="text/javascript"></script>
     <script src="sketch.js" type="text/javascript"></script>
     <script src="jeevan.js" type="text/javascript"></script>
     <style> body {padding: 0; margin: 0;} canvas {vertical-align: top;} </style>
@@ -25,13 +26,16 @@
 </div>
 <div class="intro">
   <p>Hey there!  I am Jeevan a sophomore at IIT-KANPUR pursuing my B.Tech in the field of Aerospace engineering.
-  I like watching anime , playing games and stuff like that which really helps me waste my time.
+  <img id='ufo' src="ufo.png" alt="Smiley face" width="42" height="20" align="below"> I like watching anime , playing games and stuff like that which really helps me waste my time.
   Yeah I even love to code cool stuff.... ;)</p>
 </div>
 <div class="projects">
   <p>...</p>
   <h1>Projects</h1>
-
+  <script>
+  document.getElementById("ufo").addEventListener("mouseover", mouseOver);
+  document.getElementById("ufo").addEventListener("mouseout", mouseOut);
+  </script>
 </div>
 </body>
 </html>

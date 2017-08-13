@@ -1,13 +1,14 @@
-var font,intro;
-var x = 0;
-var i = 0 ;
-var canvas , img , img2;
-var vehicles = [], projects = [] , rockets = [] ;
-var points;
+var font, intro, points;
+var x = 0 , i = 0 ;
+var canvas, img1, img2;
+var vehicles = [], projects = [] , ufos = [] ;
+var stars = [] ;
+
+var speed;
 function preload(){
  font = loadFont('12.ttf');
- img = loadImage('l.png');
- img2 = loadImage('ufo.png');
+ img1 = loadImage('black.jpg');
+ img2 = loadImage('ufo2.png');
 }
 function setup() {
   var w = windowWidth;
@@ -15,21 +16,40 @@ function setup() {
   canvas = createCanvas(w,3*h);
   canvas.position(0,0);
   canvas.style('z-index',-1);
+  // translate(width/2,height/2);
    points = font.textToPoints('Jeevan',w/8,h/1.7, w*h/2900, {
-    sampleFactor: 0.1
+    sampleFactor: 0.12
   });
-  intro = select('.intro');
-  // console.log(intro.x);
+
   for (i = 0; i < points.length; i++) {
     var pt = points[i];
     var vehicle = new Vehicle(pt.x, pt.y);
     vehicles.push(vehicle);
   }
+  var ufo = select('#ufo');
+  ufo.mousePressed(launch);
+
+  //Start with 800 stars
+  for (i = 0; i < 800; i++) {
+    stars[i] = new star(w,h);
+  }
 }
+
 
 function draw() {
   background(0);
   var w = windowWidth,h = windowHeight;
+  // Space background for #intro
+  speed = 5;
+  push()
+  translate( width / 2 , ( 3 * h / 2 ));
+  for (i = 0; i < stars.length; i++) {
+    stars[i].update();
+    stars[i].show();
+  }
+  pop()
+
+  image(img1,0,0,w,h);
   for (i = 0; i < vehicles.length; i++) {
     var v = vehicles[i];
     v.behaviors();
@@ -38,22 +58,27 @@ function draw() {
   }
   fill(51);
   var photo = ellipse(floor(w/2),floor(h+h/4.5),floor(w/9),floor(h/4));
-  // image(img ,floor(w/2),floor(h+h/4.5),floor(w/9),floor(h/4));
-  for (i = 0; i < projects.length; i++) {
-    var p = projects[i];
-    p.show();
-    p.move();
-  }
-  for(i = 0; i < rockets.length; i++) {
-    var r = rockets[i];
+// Will be added in the future for projects
+  // for (i = 0; i < projects.length; i++) {
+  //   var p = projects[i];
+  //   p.show();
+  //   p.move();
+  // }
+
+// Loop for UFOs
+  for(i = 0; i < ufos.length; i++) {
+    var r = ufos[i];
     r.show();
     r.update();
-    if(r.dead) rockets.splice(i,1);
+    if(r.dead) ufos.splice(i,1);
   }
-  console.log(rockets.length);
+
 }
+
+
 function windowResized() {
   vehicles.splice(0,vehicles.length);
+  // translate(0,0);
   var w = windowWidth, h = windowHeight;
   resizeCanvas(w,3*h);
   points = font.textToPoints('Jeevan',w/8,h/1.7, w*h/2900, {
@@ -66,8 +91,7 @@ function windowResized() {
     }
 }
 
-function mousePressed(){
-  if(mouseY > windowHeight){
-  var rok = new rocket(mouseX,mouseY,img2);
-  rockets.push(rok);}
+function launch(){
+  var ufo1 = new ufo(mouseX,mouseY,img2);
+  ufos.push(ufo1);
 }

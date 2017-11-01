@@ -9,7 +9,7 @@ function preload(){
  font = loadFont('12.ttf');
  img1 = loadImage('black.jpg');
  img2 = loadImage('ufo2.png');
- // img3 = loadImage('nit.png');
+ img3 = loadImage('nit.png');
 }
 function setup() {
   var w = windowWidth;
@@ -18,8 +18,8 @@ function setup() {
   canvas.position(0,0);
   canvas.style('z-index',-1);
   // translate(width/2,height/2);
-   points = font.textToPoints('Jeevan',w/8,h/1.7, w*h/2900, {
-    sampleFactor: 0.1
+   points = font.textToPoints('Nitesh',w/8,h/1.7, w*h/2900, {
+    sampleFactor: 0.08
   });
 
   for (i = 0; i < points.length; i++) {
@@ -58,9 +58,9 @@ function draw() {
     v.show();
   }
   fill(51);
-  var photo = ellipse(floor(w/2),floor(h+h/4.5),floor(w/9),floor(h/4));
-  // img3.imageMode(centre);
-  // image(img3,floor(w/2.3),floor(h+h/6),floor(w/9),floor(h/4));
+  // var photo = ellipse(floor(w/2),floor(h+h/4.5),floor(w/9),floor(h/4));
+   imageMode(CENTER);
+  image(img3,floor(w/2),floor(h+h/4.5),floor(w/9),floor(h/4));
 // Will be added in the future for projects
   // for (i = 0; i < projects.length; i++) {
   //   var p = projects[i];
@@ -84,7 +84,7 @@ function windowResized() {
   // translate(0,0);
   var w = windowWidth, h = windowHeight;
   resizeCanvas(w,3*h);
-  points = font.textToPoints('Jeevan',w/8,h/1.7, w*h/2900, {
+  points = font.textToPoints('Nitesh',w/8,h/1.7, w*h/2900, {
     sampleFactor: 0.1
   });
   for (i = 0; i < points.length; i++) {
